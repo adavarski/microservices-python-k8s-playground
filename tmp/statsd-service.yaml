@@ -6,16 +6,18 @@ metadata:
     kompose.version: 1.1.0 (36652f6)
   creationTimestamp: null
   labels:
-    io.kompose.service: gateway
-  name: gateway
+    io.kompose.service: statsd
+  name: statsd
 spec:
-  type: NodePort
   ports:
-  - name: "5001"
-    port: 5001
-    targetPort: 5000
-    nodePort: 30620
+  - name: "8125"
+    port: 8125
+    protocol: UDP
+    targetPort: 8125
+  - name: "8126"
+    port: 8126
+    targetPort: 8126
   selector:
-    io.kompose.service: gateway
+    io.kompose.service: statsd
 status:
   loadBalancer: {}

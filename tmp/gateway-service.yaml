@@ -9,12 +9,10 @@ metadata:
     io.kompose.service: gateway
   name: gateway
 spec:
-  type: NodePort
   ports:
   - name: "5001"
     port: 5001
     targetPort: 5000
-    nodePort: 30620
   selector:
     io.kompose.service: gateway
 status:

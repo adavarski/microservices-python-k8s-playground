@@ -1,0 +1,29 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.1.0 (36652f6)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: statsd
+  name: statsd
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: statsd
+    spec:
+      containers:
+      - image: davarski/chapter12k8s_statsd:latest
+        name: statsd
+        ports:
+        - containerPort: 8125
+          protocol: UDP
+        - containerPort: 8126
+        resources: {}
+      restartPolicy: Always
+status: {}

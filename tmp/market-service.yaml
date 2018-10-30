@@ -6,16 +6,14 @@ metadata:
     kompose.version: 1.1.0 (36652f6)
   creationTimestamp: null
   labels:
-    io.kompose.service: gateway
-  name: gateway
+    io.kompose.service: market
+  name: market
 spec:
-  type: NodePort
   ports:
-  - name: "5001"
-    port: 5001
+  - name: "5005"
+    port: 5005
     targetPort: 5000
-    nodePort: 30620
   selector:
-    io.kompose.service: gateway
+    io.kompose.service: market
 status:
   loadBalancer: {}

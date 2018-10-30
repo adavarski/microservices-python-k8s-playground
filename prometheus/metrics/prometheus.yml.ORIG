@@ -43,7 +43,7 @@ scrape_configs:
     # scheme defaults to 'http'.
 
     static_configs:
-      - targets: ['rabbitmq:15673']
+      - targets: ['rabbitmq:15672']
         labels:
           exporter: 'rabbitmq'
 

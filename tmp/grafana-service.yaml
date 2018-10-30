@@ -6,16 +6,16 @@ metadata:
     kompose.version: 1.1.0 (36652f6)
   creationTimestamp: null
   labels:
-    io.kompose.service: gateway
-  name: gateway
+    io.kompose.service: grafana
+  name: grafana
 spec:
   type: NodePort
   ports:
-  - name: "5001"
-    port: 5001
-    targetPort: 5000
-    nodePort: 30620
+  - name: "3900"
+    port: 3900
+    targetPort: 3000
+    nodePort: 30623
   selector:
-    io.kompose.service: gateway
+    io.kompose.service: grafana
 status:
   loadBalancer: {}
