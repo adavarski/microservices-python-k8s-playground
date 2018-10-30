@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - image: docker.elastic.co/elasticsearch/elasticsearch:6.4.2
-        name: davarski/chapter12k8s_elasticsearch:latest
+        name: elasticsearch
         ports:
         - containerPort: 9200
         resources: {}
