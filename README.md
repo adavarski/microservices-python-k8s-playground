@@ -36,28 +36,48 @@ Edit *-deployment.yaml and setup image: - image: davarski/chapter12k8s_{service}
 
 Deploy ... kubectl create -f account-transactions-deployment.yaml,account-transactions-service.yaml,...
 
-davar@home ~/LABS/microservices-in-action/chapter7-k8s $ kubectl get pod --namespace defaultNAME                                   READY   STATUS    RESTARTS   AGE
-account-transactions-5995ff6ff-tzsfh   1/1     Running   1          50m
-fees-6b8df49bb5-96c6n                  1/1     Running   0          50m
-gateway-c74956cfd-bkrdg                1/1     Running   0          50m
-hello-65ff564d-dvhq5                   1/1     Running   2          1d
-market-8d4b85fd8-z2qq5                 1/1     Running   0          50m
-orders-56cff44957-thvjr                1/1     Running   0          29m
-rabbitmq-7bfffd5f7c-nb6sz              1/1     Running   0          1h
-redis-776cf5d95c-x42vc                 1/1     Running   0          55m
-statsd-agent-646b6c47bd-grpdl          1/1     Running   0          1h
-davar@home ~/LABS/microservices-in-action/chapter7-k8s $ kubectl get svc --namespace default
-NAME                   TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)              AGE
-account-transactions   ClusterIP   10.100.13.195    <none>        5003/TCP             49m
-fees                   ClusterIP   10.99.15.121     <none>        5004/TCP             49m
-gateway                ClusterIP   10.100.169.37    <none>        5001/TCP             49m
-hello                  ClusterIP   10.109.91.30     <none>        80/TCP               1d
-kubernetes             ClusterIP   10.96.0.1        <none>        443/TCP              3d
-market                 ClusterIP   10.102.3.54      <none>        5005/TCP             49m
-orders                 ClusterIP   10.98.165.21     <none>        5002/TCP             29m
-rabbitmq               ClusterIP   10.104.42.208    <none>        5673/TCP,15673/TCP   1h
-redis                  ClusterIP   10.108.88.43     <none>        6380/TCP             55m
-statsd-agent           ClusterIP   10.107.209.171   <none>        8126/TCP             1h
+for i in `ls -1 *service*`; do kubectl create -f  $i;done
+for i in `ls -1 *deplo*`; do kubectl create -f  $i;done
+
+davar@home ~/LABS/microservices-in-action/chapter12-k8s $ kubectl get svc --namespace=default
+NAME                   TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)               AGE
+account-transactions   ClusterIP   10.108.41.27     <none>        5003/TCP              11m
+alerts                 ClusterIP   10.111.183.2     <none>        5006/TCP              11m
+elasticsearch          ClusterIP   10.106.238.14    <none>        9200/TCP              11m
+fees                   ClusterIP   10.103.15.233    <none>        5004/TCP              11m
+fluentd                ClusterIP   10.97.154.90     <none>        24224/TCP,24224/UDP   7m
+gateway                ClusterIP   10.109.8.206     <none>        5001/TCP              11m
+grafana                NodePort    10.97.13.168     <none>        3900:30623/TCP        11m
+hello                  ClusterIP   10.109.91.30     <none>        80/TCP                1d
+kibana                 NodePort    10.99.57.230     <none>        5601:30624/TCP        11m
+kubernetes             ClusterIP   10.96.0.1        <none>        443/TCP               6h
+market                 ClusterIP   10.102.152.34    <none>        5005/TCP              11m
+orders                 ClusterIP   10.103.177.30    <none>        5002/TCP              11m
+prometheus             ClusterIP   10.100.184.229   <none>        9090/TCP              11m
+rabbitmq               ClusterIP   10.111.198.40    <none>        5673/TCP,15673/TCP    10m
+redis                  ClusterIP   10.105.219.211   <none>        6380/TCP              10m
+statsd                 ClusterIP   10.97.124.90     <none>        8125/UDP,8126/TCP     10m
+statsd-exporter        ClusterIP   10.103.140.199   <none>        9102/TCP,9125/UDP     10m
+
+davar@home ~/LABS/microservices-in-action/chapter12-k8s $ kubectl get deployments --namespace=default
+NAME                   DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+account-transactions   1         1         1            0           5m
+alerts                 1         1         1            1           5m
+elasticsearch          1         1         1            0           30s
+fees                   1         1         1            0           5m
+fluentd                1         1         1            0           5m
+gateway                1         1         1            1           5m
+grafana                1         1         1            0           5m
+hello                  1         1         1            1           1d
+kibana                 1         1         1            1           5m
+market                 1         1         1            0           5m
+orders                 1         1         1            0           5m
+prometheus             1         1         1            0           5m
+rabbitmq               1         1         1            0           5m
+redis                  1         1         1            0           5m
+statsd                 1         1         1            0           5m
+statsd-exporter        1         1         1            0           5m
+
 
 davar@home ~/LABS/microservices-in-action/chapter7-k8s $ minikube ssh
                          _             _            
