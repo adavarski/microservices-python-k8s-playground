@@ -78,6 +78,26 @@ redis                  1         1         1            0           5m
 statsd                 1         1         1            0           5m
 statsd-exporter        1         1         1            0           5m
 
+davar@home ~/LABS/microservices-in-action/chapter12-k8s $ kubectl get pod --namespace=default
+NAME                                   READY   STATUS    RESTARTS   AGE
+account-transactions-895fcdd5f-chdlm   1/1     Running   1          1h
+alerts-797cf6875f-njp47                1/1     Running   0          1h
+elasticsearch-9965bfd94-bzv5m          1/1     Running   0          55m
+fees-54f5845cdf-mj9bh                  1/1     Running   1          1h
+fluentd-565cc9c796-gt2p2               1/1     Running   0          1h
+gateway-5547b7bfc8-vlbn5               1/1     Running   1          1h
+grafana-55c7956497-btb5s               1/1     Running   0          1h
+hello-65ff564d-dvhq5                   1/1     Running   2          1d
+kibana-55c56dff47-dfs8g                1/1     Running   0          1h
+market-69b4c887c6-s7d8t                1/1     Running   1          1h
+orders-b6644c97-jrxgf                  1/1     Running   1          1h
+prometheus-6984678f96-cfvt6            1/1     Running   0          1h
+rabbitmq-6ffd6bc47c-jfx25              1/1     Running   0          1h
+redis-776cf5d95c-s8jv8                 1/1     Running   0          1h
+statsd-64885496c4-6jrb2                1/1     Running   0          1h
+statsd-exporter-6857d7d8c8-nbwld       1/1     Running   0          1h
+
+
 
 davar@home ~/LABS/microservices-in-action/chapter7-k8s $ minikube ssh
                          _             _            
