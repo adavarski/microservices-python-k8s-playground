@@ -1,0 +1,29 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.1.0 (36652f6)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: fluentd
+  name: fluentd
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: fluentd
+    spec:
+      containers:
+      - image: davarski/chapter12k8s_fluentd:latest
+        name: fluentd
+        ports:
+        - containerPort: 24224
+        - containerPort: 24224
+          protocol: UDP
+        resources: {}
+      restartPolicy: Always
+status: {}
