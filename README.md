@@ -36,6 +36,8 @@ Edit *-deployment.yaml and setup image: - image: davarski/chapter12k8s_{service}
 
 Deploy ... kubectl create -f account-transactions-deployment.yaml,account-transactions-service.yaml,...
 
+kubectl create -f ./tmp
+
 for i in `ls -1 *service*`; do kubectl create -f  $i;done
 for i in `ls -1 *deplo*`; do kubectl create -f  $i;done
 
