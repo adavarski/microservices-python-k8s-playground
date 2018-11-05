@@ -35,6 +35,8 @@ INFO Kubernetes file "gateway-service.yaml" created
 INFO Kubernetes file "market-service.yaml" created 
 ......
 
+minikube ssh --- sysctl -w vm.max_map_count=262144 to fix ERROR: [1] bootstrap checks failed - elasticsearch
+
 Edit *-deployment.yaml and setup image: - image: davarski/chapter12k8s_{service}:latest
 
 Deploy ... kubectl create -f account-transactions-deployment.yaml,account-transactions-service.yaml,...
