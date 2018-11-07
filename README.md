@@ -49,7 +49,7 @@ kubectl create -f ./tmp
 for i in `ls -1 *service*`; do kubectl create -f  $i;done
 for i in `ls -1 *deplo*`; do kubectl create -f  $i;done
 
-davar@home ~/LABS/microservices-in-action/chapter12-k8s $ kubectl get svc --namespace=default
+$ kubectl get svc --namespace=default
 NAME                   TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)               AGE
 account-transactions   ClusterIP   10.108.41.27     <none>        5003/TCP              11m
 alerts                 ClusterIP   10.111.183.2     <none>        5006/TCP              11m
@@ -69,7 +69,7 @@ redis                  ClusterIP   10.105.219.211   <none>        6380/TCP      
 statsd                 ClusterIP   10.97.124.90     <none>        8125/UDP,8126/TCP     10m
 statsd-exporter        ClusterIP   10.103.140.199   <none>        9102/TCP,9125/UDP     10m
 
-davar@home ~/LABS/microservices-in-action/chapter12-k8s $ kubectl get deployments --namespace=default
+$ kubectl get deployments --namespace=default
 NAME                   DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
 account-transactions   1         1         1            0           5m
 alerts                 1         1         1            1           5m
@@ -88,7 +88,7 @@ redis                  1         1         1            0           5m
 statsd                 1         1         1            0           5m
 statsd-exporter        1         1         1            0           5m
 
-davar@home ~/LABS/microservices-in-action/chapter12-k8s $ kubectl get pod --namespace=default
+$ kubectl get pod --namespace=default
 NAME                                   READY   STATUS    RESTARTS   AGE
 account-transactions-895fcdd5f-chdlm   1/1     Running   1          1h
 alerts-797cf6875f-njp47                1/1     Running   0          1h
@@ -109,7 +109,7 @@ statsd-exporter-6857d7d8c8-nbwld       1/1     Running   0          1h
 
 
 
-davar@home ~/LABS/microservices-in-action/chapter7-k8s $ minikube ssh
+$ minikube ssh
                          _             _            
             _         _ ( )           ( )           
   ___ ___  (_)  ___  (_)| |/')  _   _ | |_      __  
@@ -125,7 +125,7 @@ starting services: orders_service
 Connected to amqp://guest:**@rabbitmq:5673//
 ```
 ```
-davar@home ~/LABS/microservices-in-action/chapter7-k8s $ cat gateway-service.yaml 
+$ cat gateway-service.yaml 
 apiVersion: v1
 kind: Service
 metadata:
@@ -152,6 +152,6 @@ status:
   481  kubectl create -f gateway-service.yaml 
 
 
-davar@home ~/LABS/microservices-in-action/chapter7-k8s $ curl -X POST http://`minikube ip`:30623/shares/sell -H 'cache-control: no-cache' -H 'content-type: application/json'
+$ curl -X POST http://`minikube ip`:30623/shares/sell -H 'cache-control: no-cache' -H 'content-type: application/json'
 {"ok": "sell order bfbd8605-4362-40c9-8512-bfc1e44a5929 placed"}davar@home ~/LABS/microservices-in-action/chapter7-k8s $
 ```
