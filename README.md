@@ -2,6 +2,8 @@ App for the Microservices
 
 ![Chassis](chassis.png)
 ![Services](services.png)
+![Monitoring](mon.png)
+![Logs](logs.png)
 
 Python framework for building microservices https://www.nameko.io 
 
