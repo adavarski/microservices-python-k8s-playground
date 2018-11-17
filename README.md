@@ -158,7 +158,7 @@ $ curl -X POST http://`minikube ip`:30623/shares/sell -H 'cache-control: no-cach
 {"ok": "sell order bfbd8605-4362-40c9-8512-bfc1e44a5929 placed"}davar@home ~/LABS/microservices-in-action/chapter7-k8s $
 ```
 
-
+```
 Rancher : RKC deploy
 
 $ sudo mkdir -p /vagrant/rancher_db
@@ -184,3 +184,4 @@ fees-service.yaml                     market-service.yaml      rabbitmq-service.
 $ rancher kubectl create -f .
 
 Add ingress .... service gateway
+```
