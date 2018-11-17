@@ -157,3 +157,30 @@ status:
 $ curl -X POST http://`minikube ip`:30623/shares/sell -H 'cache-control: no-cache' -H 'content-type: application/json'
 {"ok": "sell order bfbd8605-4362-40c9-8512-bfc1e44a5929 placed"}davar@home ~/LABS/microservices-in-action/chapter7-k8s $
 ```
+
+
+Rancher : RKC deploy
+
+$ sudo mkdir -p /vagrant/rancher_db
+$ docker run -d -v /vagrant/rancher_db/mysql/:/var/lib/mysql --restart=unless-stopped -p 80:80 -p 443:443 rancher/rancher:v2.0.5
+
+Login to rancher UI and add custom cluster
+
+$ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run rancher/rancher-agent:v2.0.5 --server https://192.168.0.102 --token dm4hrq7kn8xm5p9pkhl8xf4rxfr6mr89rxvtmz8fvcjllmz8j27cfc --ca-checksum 33bf59216e3e370cb3cbede1c8117c9694e32a0bf85b34267583e31d72a0300d --address 192.168.0.102 --etcd --controlplane --worker
+
+download rancher (UI) and cp /usr/local/bin
+
+Create new Key --- : Global/Users -> API&Keys .. create nen key "deploy" and get token
+
+$ rancher login https://192.168.0.103 --token token-8lxb5:c7f5pjk462bs9v97rfcw5pfhtk9tgw94tt2hv8m45fn7qlwx58gwj9
+
+$ ls
+account-transactions-deployment.yaml  gateway-deployment.yaml  orders-deployment.yaml    redis-deployment.yaml
+account-transactions-service.yaml     gateway-service.yaml     orders-service.yaml       redis-service.yaml
+fees-deployment.yaml                  market-deployment.yaml   rabbitmq-deployment.yaml  statsd-agent-deployment.yaml
+fees-service.yaml                     market-service.yaml      rabbitmq-service.yaml     statsd-agent-service.yaml
+
+
+$ rancher kubectl create -f .
+
+Add ingress .... service gateway
